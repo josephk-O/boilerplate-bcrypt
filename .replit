@@ -1,5 +1,7 @@
 run = "npm start"
 entrypoint = "server.js"
+hidden = [".config", "package-lock.json"]
+modules = ["nodejs-20:v8-20230920-bd784b9"]
 
 [packager]
 language = "nodejs"
@@ -8,3 +10,14 @@ language = "nodejs"
   packageSearch = true
   guessImports = true
   enabledForHosting = false
+
+[unitTest]
+language = "nodejs"
+
+[nix]
+channel = "stable-23_05"
+
+[deployment]
+run = ["node", "index.js"]
+deploymentTarget = "cloudrun"
+ignorePorts = false
